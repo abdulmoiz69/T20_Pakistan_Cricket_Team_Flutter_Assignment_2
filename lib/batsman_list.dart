@@ -1,5 +1,4 @@
 // batsman_list.dart
-
 import 'package:flutter/material.dart';
 import 'batsman.dart';
 
@@ -25,10 +24,13 @@ class BatsmanList extends StatelessWidget {
         child: ListView.builder(
           itemCount: combinedList.length,
           itemBuilder: (context, index) {
+            String imageUrl = "";
+
             // Use a conditional statement to determine whether to display batsman or bowler data
             if (combinedList[index] is Batsman) {
               // Display batsman data
               Batsman batsman = combinedList[index] as Batsman;
+              //imageUrl = batsman.image;
               return Card(
                 elevation: 5,
                 margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -40,7 +42,7 @@ class BatsmanList extends StatelessWidget {
                   contentPadding: EdgeInsets.all(16),
                   leading: CircleAvatar(
                     radius: 30,
-                   // backgroundImage: NetworkImage(combinedList[index].https://images.app.goo.gl/925kfHMxZS7PLNAEA),
+                    backgroundImage: AssetImage(batsman.image),
                     backgroundColor: Colors.white,
                   ),
                   title: Text(
@@ -70,7 +72,6 @@ class BatsmanList extends StatelessWidget {
                         'Runs: ${batsman.runs}',
                         style: TextStyle(color: Colors.white),
                       ),
-
                     ],
                   ),
                 ),
@@ -78,6 +79,7 @@ class BatsmanList extends StatelessWidget {
             } else if (combinedList[index] is Bowlers) {
               // Display bowler data
               Bowlers bowler = combinedList[index] as Bowlers;
+              // ... (if needed, you can set a default image for bowlers)
               return Card(
                 elevation: 5,
                 margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -89,6 +91,7 @@ class BatsmanList extends StatelessWidget {
                   contentPadding: EdgeInsets.all(16),
                   leading: CircleAvatar(
                     radius: 30,
+                    backgroundImage: AssetImage(bowler.image),
                     backgroundColor: Colors.white,
                   ),
                   title: Text(
